@@ -1,0 +1,338 @@
+# lear
+# Space
+
+# Welcome to the Space game
+# This game is made in pygame
+
+import pygame
+import random as rd
+
+if __name__ == "__main__":
+    pygame.init()
+
+    # Screen
+    WIDHT = 600
+    HEIGHT = 800
+
+    screen = pygame.display.set_mode((WIDHT, HEIGHT))
+
+    background = pygame.image.load("space_2_bg.jpg")
+
+    # Icon
+    icon = pygame.image.load("asteroid_5.png")
+    pygame.display.set_icon(icon)
+
+    # Title
+    pygame.display.set_caption("Space")
+
+    # Spaceship
+    class Spaceship:
+        def __init__(self, spaceship, spaceship_X, spaceship_Y):
+            self.spaceship = spaceship
+            self.spaceship_X = spaceship_X
+            self.spaceship_Y = spaceship_Y
+
+        def get_spaceship(self):
+            screen.blit(self.spaceship, (self.spaceship_X, self.spaceship_Y))
+
+    ship = pygame.image.load("my_ufo.png")
+    ship_X = 200
+    ship_Y = 550
+    ship_X_movement = 0
+    ship_Y_movement = 0
+
+    SHIP = Spaceship(ship, ship_X, ship_Y)
+
+    # Asteroids
+    class Meteor:
+        def __init__(self, meteor_1, meteor_1_X, meteor_1_Y, meteor_2, meteor_2_X, meteor_2_Y, meteor_3, meteor_3_X, meteor_3_Y, meteor_4, meteor_4_X, meteor_4_Y, meteor_5, meteor_5_X, meteor_5_Y, meteor_6, meteor_6_X, meteor_6_Y, meteor_7, meteor_7_X, meteor_7_Y, meteor_8, meteor_8_X, meteor_8_Y):
+            self.meteor_1 = meteor_1
+            self.meteor_1_X = meteor_1_X
+            self.meteor_1_Y = meteor_1_Y
+
+            self.meteor_2 = meteor_2
+            self.meteor_2_X = meteor_2_X
+            self.meteor_2_Y = meteor_2_Y
+
+            self.meteor_3 = meteor_3
+            self.meteor_3_X = meteor_3_X
+            self.meteor_3_Y = meteor_3_Y
+
+            self.meteor_4 = meteor_4
+            self.meteor_4_X = meteor_4_X
+            self.meteor_4_Y = meteor_4_Y
+
+            self.meteor_5 = meteor_5
+            self.meteor_5_X = meteor_5_X
+            self.meteor_5_Y = meteor_5_Y
+
+            self.meteor_6 = meteor_6
+            self.meteor_6_X = meteor_6_X
+            self.meteor_6_Y = meteor_6_Y
+
+            self.meteor_7 = meteor_7
+            self.meteor_7_X = meteor_7_X
+            self.meteor_7_Y = meteor_7_Y
+
+            self.meteor_8 = meteor_8
+            self.meteor_8_X = meteor_8_X
+            self.meteor_8_Y = meteor_8_Y
+
+        def get_meteor_1(self):
+            screen.blit(self.meteor_1, (self.meteor_1_X, self.meteor_1_Y))
+
+        def get_meteor_2(self):
+            screen.blit(self.meteor_2, (self.meteor_2_X, self.meteor_2_Y))
+
+        def get_meteor_3(self):
+            screen.blit(self.meteor_3, (self.meteor_3_X, self.meteor_3_Y))
+
+        def get_meteor_4(self):
+            screen.blit(self.meteor_4, (self.meteor_4_X, self.meteor_4_Y))
+
+        def get_meteor_5(self):
+            screen.blit(self.meteor_5, (self.meteor_5_X, self.meteor_5_Y))
+
+        def get_meteor_6(self):
+            screen.blit(self.meteor_6, (self.meteor_6_X, self.meteor_6_Y))
+
+        def get_meteor_7(self):
+            screen.blit(self.meteor_7, (self.meteor_7_X, self.meteor_7_Y))
+
+        def get_meteor_8(self):
+            screen.blit(self.meteor_8, (self.meteor_8_X, self.meteor_8_Y))
+
+    
+    asteroid_1 = pygame.image.load("asteroid_1.png")
+    asteroid_1_X = rd.randint(0, 534)
+    asteroid_1_Y = -30
+    asteroid_1_movement = 0.7
+
+    asteroid_2 = pygame.image.load("asteroid_2.png")
+    asteroid_2_X = rd.randint(0, 534)
+    asteroid_2_Y = -40
+    asteroid_2_movement = 0.8
+
+    asteroid_3 = pygame.image.load("asteroid_3.png")
+    asteroid_3_X = rd.randint(0, 534)
+    asteroid_3_Y = -50
+    asteroid_3_movement = 0.6
+
+    asteroid_4 = pygame.image.load("asteroid_4.png")
+    asteroid_4_X = rd.randint(0, 534)
+    asteroid_4_Y = -60
+    asteroid_4_movement = 0.75
+
+    asteroid_5 = pygame.image.load("asteroid_5.png")
+    asteroid_5_X = rd.randint(0, 534)
+    asteroid_5_Y = -60
+    asteroid_5_movement = 0.55
+
+    asteroid_6 = pygame.image.load("asteroid_6.png")
+    asteroid_6_X = rd.randint(0, 534)
+    asteroid_6_Y = -50
+    asteroid_6_movement = 0.65
+
+    asteroid_7 = pygame.image.load("asteroid_7.png")
+    asteroid_7_X = rd.randint(0, 534)
+    asteroid_7_Y = -40
+    asteroid_7_movement = 0.5
+
+    asteroid_8 = pygame.image.load("asteroid_8.png")
+    asteroid_8_X = rd.randint(0, 534)
+    asteroid_8_Y = -30
+    asteroid_8_movement = 0.85
+
+    Asteroid = Meteor(asteroid_1, asteroid_1_X, asteroid_1_Y, asteroid_2, asteroid_2_X, asteroid_2_Y, asteroid_3, asteroid_3_X, asteroid_3_Y, asteroid_4, asteroid_4_X, asteroid_4_Y, asteroid_5, asteroid_5_X, asteroid_5_Y, asteroid_6, asteroid_6_X, asteroid_6_Y, asteroid_7, asteroid_7_X, asteroid_7_Y, asteroid_8, asteroid_8_X, asteroid_8_Y)
+
+
+    # Scpecial
+    text = pygame.font.Font("freesansbold.ttf", 40)
+    text_2 = pygame.font.Font("freesansbold.ttf", 50)
+
+    class Statistics:
+        def __init__(self, score):
+            self.score = score
+
+        def get_score(self):
+            score_text = text.render(f"Score : {self.score}", True, (180, 40, 60))
+            screen.blit(score_text, (380, 20))
+
+        def get_gameover(self):
+            over_text = text_2.render("Game Over!", True, (100, 100, 250))
+            screen.blit(over_text, (165, 350))
+
+        def get_win(self):
+            win_text = text_2.render("You Win!", True, (50, 200, 100))
+            screen.blit(win_text, (185, 350))
+
+    score = 0
+
+    STATIC = Statistics(score)
+
+    poll = False
+    jill = True
+
+    # Sound
+    winning = pygame.mixer.Sound("TTT_win.wav")
+    losing = pygame.mixer.Sound("dying.wav")
+    score_gaining = pygame.mixer.Sound("score_gaining.wav")
+
+    win = True
+    lose = True
+
+
+    running = True
+    while running:
+        screen.blit(background, (0, 0))
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT and SHIP.spaceship_X > 0:
+                    ship_X_movement = -0.8
+
+                if event.key == pygame.K_RIGHT and SHIP.spaceship_X < 534:
+                    ship_X_movement = 0.8
+
+                if event.key == pygame.K_UP and SHIP.spaceship_Y > 0:
+                    ship_Y_movement = -0.8
+
+                if event.key == pygame.K_DOWN and SHIP.spaceship_Y < 734:
+                    ship_Y_movement = 0.8
+
+                if event.key == pygame.K_r:
+                    poll = False
+                    jill = True
+                    win = True
+                    lose = True
+                    SHIP.spaceship_X = 200
+                    SHIP.spaceship_Y = 550
+                    STATIC.score = 0
+                    Asteroid.meteor_1_X = rd.randint(0, 534)
+                    Asteroid.meteor_1_Y = -50
+                    Asteroid.meteor_2_X = rd.randint(0, 534)
+                    Asteroid.meteor_2_Y = -60
+                    Asteroid.meteor_3_X = rd.randint(0, 534)
+                    Asteroid.meteor_3_Y = -70
+                    Asteroid.meteor_4_X = rd.randint(0, 534)
+                    Asteroid.meteor_4_Y = -80
+                    Asteroid.meteor_5_X = rd.randint(0, 534)
+                    Asteroid.meteor_5_Y = -80
+                    Asteroid.meteor_6_X = rd.randint(0, 534)
+                    Asteroid.meteor_6_Y = -70
+                    Asteroid.meteor_7_X = rd.randint(0, 534)
+                    Asteroid.meteor_7_Y = -60
+                    Asteroid.meteor_8_X = rd.randint(0, 534)
+                    Asteroid.meteor_8_Y = -50
+
+
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                    ship_X_movement = 0
+
+                if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                    ship_Y_movement = 0
+
+        if not(poll):
+            SHIP.spaceship_X += ship_X_movement
+            SHIP.spaceship_Y += ship_Y_movement
+
+            if SHIP.spaceship_X <= 0 or SHIP.spaceship_X >= 534:
+                ship_X_movement = 0
+
+            if SHIP.spaceship_Y <= 0 or SHIP.spaceship_Y >= 734:
+                ship_Y_movement = 0
+
+            Asteroid.meteor_1_Y += asteroid_1_movement
+            Asteroid.meteor_2_Y += asteroid_2_movement
+            Asteroid.meteor_3_Y += asteroid_3_movement
+            Asteroid.meteor_4_Y += asteroid_4_movement
+            Asteroid.meteor_5_Y += asteroid_5_movement
+            Asteroid.meteor_6_Y += asteroid_6_movement
+            Asteroid.meteor_7_Y += asteroid_7_movement
+            Asteroid.meteor_8_Y += asteroid_8_movement
+
+            if Asteroid.meteor_1_Y >= 840:
+                Asteroid.meteor_1_X = rd.randint(0, 534)
+                Asteroid.meteor_1_Y = -44
+                STATIC.score += 1
+                score_gaining.play()
+
+            if Asteroid.meteor_2_Y >= 840:
+                Asteroid.meteor_2_X = rd.randint(0, 534)
+                Asteroid.meteor_2_Y = -64
+                STATIC.score += 1
+                score_gaining.play()
+
+            if Asteroid.meteor_3_Y >= 840:
+                Asteroid.meteor_3_X = rd.randint(0, 534)
+                Asteroid.meteor_3_Y = -44
+                STATIC.score += 1
+                score_gaining.play()
+
+            if Asteroid.meteor_4_Y >= 840:
+                Asteroid.meteor_4_X = rd.randint(0, 534)
+                Asteroid.meteor_4_Y = -54
+                STATIC.score += 1
+                score_gaining.play()
+
+            if Asteroid.meteor_5_Y >= 840:
+                Asteroid.meteor_5_X = rd.randint(0, 534)
+                Asteroid.meteor_5_Y = -64
+                STATIC.score += 1
+                score_gaining.play()
+
+            if Asteroid.meteor_6_Y >= 840:
+                Asteroid.meteor_6_X = rd.randint(0, 534)
+                Asteroid.meteor_6_Y = -74
+                STATIC.score += 1
+                score_gaining.play()
+
+            if Asteroid.meteor_7_Y >= 840:
+                Asteroid.meteor_7_X = rd.randint(0, 534)
+                Asteroid.meteor_7_Y = -84
+                STATIC.score += 1
+                score_gaining.play()
+
+            if Asteroid.meteor_8_Y >= 840:
+                Asteroid.meteor_8_X = rd.randint(0, 534)
+                Asteroid.meteor_8_Y = -84
+                STATIC.score += 1
+                score_gaining.play()
+
+
+        SHIP.get_spaceship()
+        Asteroid.get_meteor_1()
+        Asteroid.get_meteor_2()
+        Asteroid.get_meteor_3()
+        Asteroid.get_meteor_4()
+        Asteroid.get_meteor_5()
+        Asteroid.get_meteor_6()
+        Asteroid.get_meteor_7()
+        Asteroid.get_meteor_8()
+        STATIC.get_score()
+
+        if STATIC.score == 999:
+            STATIC.get_win()
+            poll = True
+            jill = False
+
+            if win:
+                winning.play()
+                win = False
+
+        if SHIP.spaceship_X + 36 > Asteroid.meteor_1_X and SHIP.spaceship_X - 36 < Asteroid.meteor_1_X and SHIP.spaceship_Y + 36 > Asteroid.meteor_1_Y and SHIP.spaceship_Y - 36 < Asteroid.meteor_1_Y or SHIP.spaceship_X + 36 > Asteroid.meteor_2_X and SHIP.spaceship_X - 36 < Asteroid.meteor_2_X and SHIP.spaceship_Y + 36 > Asteroid.meteor_2_Y and SHIP.spaceship_Y - 36 < Asteroid.meteor_2_Y or SHIP.spaceship_X + 36 > Asteroid.meteor_3_X and SHIP.spaceship_X - 36 < Asteroid.meteor_3_X and SHIP.spaceship_Y + 36 > Asteroid.meteor_3_Y and SHIP.spaceship_Y - 36 < Asteroid.meteor_3_Y or SHIP.spaceship_X + 36 > Asteroid.meteor_4_X and SHIP.spaceship_X - 36 < Asteroid.meteor_4_X and SHIP.spaceship_Y + 36 > Asteroid.meteor_4_Y and SHIP.spaceship_Y - 36 < Asteroid.meteor_4_Y or SHIP.spaceship_X + 36 > Asteroid.meteor_5_X and SHIP.spaceship_X - 36 < Asteroid.meteor_5_X and SHIP.spaceship_Y + 36 > Asteroid.meteor_5_Y and SHIP.spaceship_Y - 36 < Asteroid.meteor_5_Y or SHIP.spaceship_X + 36 > Asteroid.meteor_6_X and SHIP.spaceship_X - 36 < Asteroid.meteor_6_X and SHIP.spaceship_Y + 36 > Asteroid.meteor_6_Y and SHIP.spaceship_Y - 36 < Asteroid.meteor_6_Y or SHIP.spaceship_X + 36 > Asteroid.meteor_7_X and SHIP.spaceship_X - 36 < Asteroid.meteor_7_X and SHIP.spaceship_Y + 36 > Asteroid.meteor_7_Y and SHIP.spaceship_Y - 36 < Asteroid.meteor_7_Y or SHIP.spaceship_X + 36 > Asteroid.meteor_8_X and SHIP.spaceship_X - 36 < Asteroid.meteor_8_X and SHIP.spaceship_Y + 36 > Asteroid.meteor_8_Y and SHIP.spaceship_Y - 36 < Asteroid.meteor_8_Y:
+            poll = True
+
+        if poll and jill:
+            STATIC.get_gameover()
+
+            if lose:
+                losing.play()
+                lose = False
+
+
+        pygame.display.update()
